@@ -42,6 +42,9 @@ RUN ansible.sh asyn
 COPY ibek-support/motor/ motor/
 RUN ansible.sh motor
 
+COPY ibek-support/motorAppliedMotionStepper/ motorAppliedMotionStepper/
+# Don't run ansible clone & build for this support module, since it builds from within.
+
 # get the ioc source and build it
 COPY ioc ${SOURCE_FOLDER}/ioc
 RUN ansible.sh ioc
