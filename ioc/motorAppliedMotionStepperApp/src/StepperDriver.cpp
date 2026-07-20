@@ -172,6 +172,10 @@ StepperAxis::StepperAxis(StepperController *pC, int axisNo)
 {  
   asynStatus status;
 
+  // Set output format to decimal (not hexadecimal)
+  sprintf(pC_->outString_, "IFD");
+  status = pC_->writeReadController();
+
   // Initialize stepsPerRevolution
   sprintf(pC_->outString_, "EG");
   status = pC_->writeReadController();
