@@ -36,6 +36,9 @@ COPY ibek-support/autosave/ autosave
 RUN ansible.sh autosave
 
 # Support modules specific to this IOC
+COPY ibek-support/sequencer/ sequencer/
+RUN ansible.sh sequencer
+
 COPY ibek-support/asyn/ asyn/
 RUN ansible.sh asyn
 
