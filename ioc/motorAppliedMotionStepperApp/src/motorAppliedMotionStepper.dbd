@@ -1,6 +1,0 @@
-# Applied Motion driver support.
-
-# Model 3 driver
-registrar(StepperRegister)
-
-
