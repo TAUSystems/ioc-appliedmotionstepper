@@ -262,9 +262,19 @@ asynStatus StepperAxis::moveVelocity(double minVelocity, double maxVelocity, dou
     
   status = sendAccelAndVelocity(acceleration, maxVelocity);
 
-  // TODO: Start jogging
+  // Set jog direction by setting Distance/Position parameter positive or negative
+  if (maxVelocity >= 0.0) {
+    sprintf(pC_->outString_, "DI1");
+  } else {
+    sprintf(pC_->outString_, "DI-1");
+  }
 
-  status = asynDisabled;
+  status = pC_->writeReadController();
+  
+  // send Commence Jogging command
+  sprintf(pC_->outString_, "CJ");
+  status = pC_->writeReadController();
+
   return status;
 }
 
